@@ -1,0 +1,5 @@
+.vs/
+bin/
+cg_proj_1/
+obj/
+*.csproj.user
