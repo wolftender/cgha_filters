@@ -41,8 +41,8 @@ namespace cg_proj_1 {
 			this.aboutFilterEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-			this.pictureBox1 = new System.Windows.Forms.PictureBox();
-			this.pictureBox2 = new System.Windows.Forms.PictureBox();
+			this.pictureBoxFiltered = new System.Windows.Forms.PictureBox();
+			this.pictureBoxRaw = new System.Windows.Forms.PictureBox();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.filtersGroupBox = new System.Windows.Forms.GroupBox();
 			this.activeFiltersList = new System.Windows.Forms.ListView();
@@ -55,8 +55,8 @@ namespace cg_proj_1 {
 			this.splitContainer1.Panel2.SuspendLayout();
 			this.splitContainer1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBoxFiltered)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBoxRaw)).BeginInit();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.filtersGroupBox.SuspendLayout();
 			this.SuspendLayout();
@@ -200,8 +200,8 @@ namespace cg_proj_1 {
 			this.tableLayoutPanel2.ColumnCount = 2;
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel2.Controls.Add(this.pictureBox1, 1, 0);
-			this.tableLayoutPanel2.Controls.Add(this.pictureBox2, 0, 0);
+			this.tableLayoutPanel2.Controls.Add(this.pictureBoxFiltered, 1, 0);
+			this.tableLayoutPanel2.Controls.Add(this.pictureBoxRaw, 0, 0);
 			this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
 			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -210,29 +210,29 @@ namespace cg_proj_1 {
 			this.tableLayoutPanel2.Size = new System.Drawing.Size(920, 725);
 			this.tableLayoutPanel2.TabIndex = 0;
 			// 
-			// pictureBox1
+			// pictureBoxFiltered
 			// 
-			this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+			this.pictureBoxFiltered.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.pictureBox1.Location = new System.Drawing.Point(463, 3);
-			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(454, 719);
-			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-			this.pictureBox1.TabIndex = 0;
-			this.pictureBox1.TabStop = false;
+			this.pictureBoxFiltered.Location = new System.Drawing.Point(463, 3);
+			this.pictureBoxFiltered.Name = "pictureBoxFiltered";
+			this.pictureBoxFiltered.Size = new System.Drawing.Size(454, 719);
+			this.pictureBoxFiltered.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+			this.pictureBoxFiltered.TabIndex = 0;
+			this.pictureBoxFiltered.TabStop = false;
 			// 
-			// pictureBox2
+			// pictureBoxRaw
 			// 
-			this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+			this.pictureBoxRaw.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.pictureBox2.Location = new System.Drawing.Point(3, 3);
-			this.pictureBox2.Name = "pictureBox2";
-			this.pictureBox2.Size = new System.Drawing.Size(454, 719);
-			this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-			this.pictureBox2.TabIndex = 1;
-			this.pictureBox2.TabStop = false;
+			this.pictureBoxRaw.Location = new System.Drawing.Point(3, 3);
+			this.pictureBoxRaw.Name = "pictureBoxRaw";
+			this.pictureBoxRaw.Size = new System.Drawing.Size(454, 719);
+			this.pictureBoxRaw.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+			this.pictureBoxRaw.TabIndex = 1;
+			this.pictureBoxRaw.TabStop = false;
 			// 
 			// tableLayoutPanel1
 			// 
@@ -322,8 +322,8 @@ namespace cg_proj_1 {
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
 			this.splitContainer1.ResumeLayout(false);
 			this.tableLayoutPanel2.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBoxFiltered)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBoxRaw)).EndInit();
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.filtersGroupBox.ResumeLayout(false);
 			this.ResumeLayout(false);
@@ -349,8 +349,8 @@ namespace cg_proj_1 {
 		private System.Windows.Forms.Button buttonAddFilter;
 		private System.Windows.Forms.ToolStripMenuItem aboutFilterEditorToolStripMenuItem;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-		private System.Windows.Forms.PictureBox pictureBox1;
-		private System.Windows.Forms.PictureBox pictureBox2;
+		private System.Windows.Forms.PictureBox pictureBoxFiltered;
+		private System.Windows.Forms.PictureBox pictureBoxRaw;
 		private System.Windows.Forms.ListView activeFiltersList;
 		private System.Windows.Forms.ToolStripMenuItem addFilterToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem loadFilterToolStripMenuItem;

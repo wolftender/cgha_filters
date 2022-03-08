@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Imaging;
+using System.Runtime.InteropServices;
 
 namespace cg_proj_1 {
 	public partial class MainWindow : Form {
@@ -66,9 +68,38 @@ namespace cg_proj_1 {
 			InitializeComponent ();
 		}
 
+		private Bitmap filter (Bitmap bitmap) {
+			BitmapData bitmapData = bitmap.LockBits (new Rectangle (0, 0, bitmap.Width, bitmap.Height), ImageLockMode.ReadOnly, PixelFormat.Format24bppRgb);
+
+			int size = bitmapData.Stride * bitmap.Height;
+			byte [] pixels = new byte [size];
+
+			Marshal.Copy (bitmapData.Scan0, pixels, 0, size);
+			bitmap.UnlockBits (bitmapData);
+
+			foreach (IImageFilter filter in imageFilters) {
+				byte [] filteredPixels = filter.apply (pixels);
+				Array.Copy (filteredPixels, pixels, size);
+			}
+
+			Bitmap output = new Bitmap (bitmap.Width, bitmap.Height, PixelFormat.Format24bppRgb);
+			BitmapData outputData = output.LockBits (new Rectangle (0, 0, output.Width, output.Height), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+
+			Marshal.Copy (pixels, 0, outputData.Scan0, size);
+			output.UnlockBits (outputData);
+
+			return output;
+		}
+
 		private void refreshView () {
-			pictureBox1.Image = bitmap;
-			pictureBox2.Image = filteredBitmap;
+			pictureBoxRaw.Image = bitmap;
+
+			// auto refresh
+			if (bitmap != null) {
+				filteredBitmap = filter (bitmap);
+			}
+
+			pictureBoxFiltered.Image = filteredBitmap;
 		}
 
 		private void refreshFilterList () {
@@ -95,6 +126,7 @@ namespace cg_proj_1 {
 				imageFilters.Add (newFilter);
 
 				refreshFilterList ();
+				refreshView ();
 			}
 		}
 

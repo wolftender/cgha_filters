@@ -9,7 +9,7 @@ namespace cg_proj_1.Filters {
 	class ContrastEnhance : IImageFilter {
 		public string Name => "Contrast Enhance";
 
-		public Color [] apply (Color [] bitmap) {
+		public byte [] apply (byte [] bitmap) {
 			throw new NotImplementedException ();
 		}
 	}

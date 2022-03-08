@@ -9,7 +9,7 @@ namespace cg_proj_1.Filters {
 	class BrightnessCorrection : IImageFilter {
 		public string Name => "Brightness Correct.";
 
-		public Color [] apply (Color [] bitmap) {
+		public byte [] apply (byte [] bitmap) {
 			throw new NotImplementedException ();
 		}
 	}

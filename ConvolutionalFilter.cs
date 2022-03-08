@@ -39,7 +39,7 @@ namespace cg_proj_1 {
 			Coefficients = coefficients;
 		}
 
-		public Color [] apply (Color [] bitmap) {
+		public byte [] apply (byte [] bitmap) {
 			throw new NotImplementedException ();
 		}
 	}
