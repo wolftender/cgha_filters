@@ -49,10 +49,6 @@ namespace cg_proj_1 {
 			this.buttonDeleteFilter = new System.Windows.Forms.Button();
 			this.buttonEditFilter = new System.Windows.Forms.Button();
 			this.buttonAddFilter = new System.Windows.Forms.Button();
-			this.imageGroupBox = new System.Windows.Forms.GroupBox();
-			this.dataGridView1 = new System.Windows.Forms.DataGridView();
-			this.Property = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.menuStrip1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
@@ -63,8 +59,6 @@ namespace cg_proj_1 {
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.filtersGroupBox.SuspendLayout();
-			this.imageGroupBox.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// mainStatusStrip
@@ -218,19 +212,25 @@ namespace cg_proj_1 {
 			// 
 			// pictureBox1
 			// 
-			this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.pictureBox1.Location = new System.Drawing.Point(463, 148);
+			this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.pictureBox1.Location = new System.Drawing.Point(463, 3);
 			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(454, 429);
+			this.pictureBox1.Size = new System.Drawing.Size(454, 719);
+			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
 			this.pictureBox1.TabIndex = 0;
 			this.pictureBox1.TabStop = false;
 			// 
 			// pictureBox2
 			// 
-			this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.pictureBox2.Location = new System.Drawing.Point(3, 148);
+			this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.pictureBox2.Location = new System.Drawing.Point(3, 3);
 			this.pictureBox2.Name = "pictureBox2";
-			this.pictureBox2.Size = new System.Drawing.Size(454, 429);
+			this.pictureBox2.Size = new System.Drawing.Size(454, 719);
+			this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
 			this.pictureBox2.TabIndex = 1;
 			this.pictureBox2.TabStop = false;
 			// 
@@ -240,14 +240,13 @@ namespace cg_proj_1 {
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.tableLayoutPanel1.ColumnCount = 1;
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel1.Controls.Add(this.filtersGroupBox, 0, 1);
-			this.tableLayoutPanel1.Controls.Add(this.imageGroupBox, 0, 0);
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tableLayoutPanel1.Controls.Add(this.filtersGroupBox, 0, 0);
 			this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-			this.tableLayoutPanel1.RowCount = 2;
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 500F));
+			this.tableLayoutPanel1.RowCount = 1;
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 714F));
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
 			this.tableLayoutPanel1.Size = new System.Drawing.Size(242, 725);
 			this.tableLayoutPanel1.TabIndex = 0;
 			// 
@@ -257,9 +256,9 @@ namespace cg_proj_1 {
 			this.filtersGroupBox.Controls.Add(this.buttonDeleteFilter);
 			this.filtersGroupBox.Controls.Add(this.buttonEditFilter);
 			this.filtersGroupBox.Controls.Add(this.buttonAddFilter);
-			this.filtersGroupBox.Location = new System.Drawing.Point(3, 228);
+			this.filtersGroupBox.Location = new System.Drawing.Point(3, 3);
 			this.filtersGroupBox.Name = "filtersGroupBox";
-			this.filtersGroupBox.Size = new System.Drawing.Size(228, 278);
+			this.filtersGroupBox.Size = new System.Drawing.Size(236, 278);
 			this.filtersGroupBox.TabIndex = 0;
 			this.filtersGroupBox.TabStop = false;
 			this.filtersGroupBox.Text = "Filters";
@@ -269,7 +268,7 @@ namespace cg_proj_1 {
 			this.activeFiltersList.HideSelection = false;
 			this.activeFiltersList.Location = new System.Drawing.Point(6, 22);
 			this.activeFiltersList.Name = "activeFiltersList";
-			this.activeFiltersList.Size = new System.Drawing.Size(214, 139);
+			this.activeFiltersList.Size = new System.Drawing.Size(224, 139);
 			this.activeFiltersList.TabIndex = 4;
 			this.activeFiltersList.UseCompatibleStateImageBehavior = false;
 			// 
@@ -277,7 +276,7 @@ namespace cg_proj_1 {
 			// 
 			this.buttonDeleteFilter.Location = new System.Drawing.Point(6, 225);
 			this.buttonDeleteFilter.Name = "buttonDeleteFilter";
-			this.buttonDeleteFilter.Size = new System.Drawing.Size(214, 23);
+			this.buttonDeleteFilter.Size = new System.Drawing.Size(224, 23);
 			this.buttonDeleteFilter.TabIndex = 3;
 			this.buttonDeleteFilter.Text = "Delete Filter";
 			this.buttonDeleteFilter.UseVisualStyleBackColor = true;
@@ -288,7 +287,7 @@ namespace cg_proj_1 {
 			this.buttonEditFilter.Enabled = false;
 			this.buttonEditFilter.Location = new System.Drawing.Point(6, 196);
 			this.buttonEditFilter.Name = "buttonEditFilter";
-			this.buttonEditFilter.Size = new System.Drawing.Size(214, 23);
+			this.buttonEditFilter.Size = new System.Drawing.Size(224, 23);
 			this.buttonEditFilter.TabIndex = 2;
 			this.buttonEditFilter.Text = "Edit Filter";
 			this.buttonEditFilter.UseVisualStyleBackColor = true;
@@ -298,49 +297,11 @@ namespace cg_proj_1 {
 			// 
 			this.buttonAddFilter.Location = new System.Drawing.Point(6, 167);
 			this.buttonAddFilter.Name = "buttonAddFilter";
-			this.buttonAddFilter.Size = new System.Drawing.Size(214, 23);
+			this.buttonAddFilter.Size = new System.Drawing.Size(224, 23);
 			this.buttonAddFilter.TabIndex = 1;
 			this.buttonAddFilter.Text = "Add Filter";
 			this.buttonAddFilter.UseVisualStyleBackColor = true;
 			this.buttonAddFilter.Click += new System.EventHandler(this.buttonAddFilter_Click);
-			// 
-			// imageGroupBox
-			// 
-			this.imageGroupBox.Controls.Add(this.dataGridView1);
-			this.imageGroupBox.Location = new System.Drawing.Point(3, 3);
-			this.imageGroupBox.Name = "imageGroupBox";
-			this.imageGroupBox.Size = new System.Drawing.Size(228, 219);
-			this.imageGroupBox.TabIndex = 1;
-			this.imageGroupBox.TabStop = false;
-			this.imageGroupBox.Text = "Image";
-			// 
-			// dataGridView1
-			// 
-			this.dataGridView1.AllowUserToAddRows = false;
-			this.dataGridView1.AllowUserToDeleteRows = false;
-			this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Property,
-            this.Value});
-			this.dataGridView1.Location = new System.Drawing.Point(13, 22);
-			this.dataGridView1.Name = "dataGridView1";
-			this.dataGridView1.ReadOnly = true;
-			this.dataGridView1.RowTemplate.Height = 25;
-			this.dataGridView1.Size = new System.Drawing.Size(207, 134);
-			this.dataGridView1.TabIndex = 0;
-			// 
-			// Property
-			// 
-			this.Property.HeaderText = "Property";
-			this.Property.Name = "Property";
-			this.Property.ReadOnly = true;
-			// 
-			// Value
-			// 
-			this.Value.HeaderText = "Value";
-			this.Value.Name = "Value";
-			this.Value.ReadOnly = true;
 			// 
 			// MainWindow
 			// 
@@ -364,8 +325,6 @@ namespace cg_proj_1 {
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.filtersGroupBox.ResumeLayout(false);
-			this.imageGroupBox.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -398,10 +357,6 @@ namespace cg_proj_1 {
 		private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem refreshPreviewToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem autoRefreshToolStripMenuItem;
-		private System.Windows.Forms.GroupBox imageGroupBox;
-		private System.Windows.Forms.DataGridView dataGridView1;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Property;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Value;
 	}
 }
 
