@@ -7,6 +7,7 @@ using System.Drawing;
 
 namespace cg_proj_1 {
 	interface IImageFilter {
+		string Name { get; }
 		Color [] apply (Color [] bitmap);
 	}
 

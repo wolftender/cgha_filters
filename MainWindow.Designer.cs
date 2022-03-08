@@ -271,6 +271,7 @@ namespace cg_proj_1 {
 			this.activeFiltersList.Size = new System.Drawing.Size(224, 139);
 			this.activeFiltersList.TabIndex = 4;
 			this.activeFiltersList.UseCompatibleStateImageBehavior = false;
+			this.activeFiltersList.View = System.Windows.Forms.View.List;
 			// 
 			// buttonDeleteFilter
 			// 

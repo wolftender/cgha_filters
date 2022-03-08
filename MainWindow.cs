@@ -17,11 +17,13 @@ namespace cg_proj_1 {
 			public FilterFactory (string name) {
 				this.name = name;
 			}
+
+			public abstract IImageFilter construct (MainWindow mainWindow);
 		}
 		private class FilterFactory <T> : FilterFactory where T : IImageFilter, new () {
 			public FilterFactory (string name) : base (name) { }
 
-			public T construct (MainWindow mainWindow) {
+			public override IImageFilter construct (MainWindow mainWindow) {
 				T filter = new T ();
 
 				if (typeof (T).IsSubclassOf (typeof (IEditableFilter))) {
@@ -54,6 +56,10 @@ namespace cg_proj_1 {
 			// register types of filters (hardcoded)
 			// this may be done using metaprogramming later (maybe)
 
+			filterFactories.Add (new FilterFactory<Filters.InvertFilter> ("Invert"));
+			filterFactories.Add (new FilterFactory<Filters.BrightnessCorrection> ("Brightness correction"));
+			filterFactories.Add (new FilterFactory<Filters.ContrastEnhance> ("Contrast enhnancement"));
+			filterFactories.Add (new FilterFactory<Filters.GammaCorrection> ("Gamma correction"));
 
 			// end of filter registration
 
@@ -65,8 +71,31 @@ namespace cg_proj_1 {
 			pictureBox2.Image = filteredBitmap;
 		}
 
-		private void buttonAddFilter_Click (object sender, EventArgs e) {
+		private void refreshFilterList () {
+			activeFiltersList.Items.Clear ();
 
+			foreach (IImageFilter filter in imageFilters) {
+				activeFiltersList.Items.Add (filter.Name);
+			}
+		}
+
+		private void buttonAddFilter_Click (object sender, EventArgs e) {
+			List<string> templates = new List<string> ();
+			foreach (FilterFactory factory in filterFactories) {
+				templates.Add (factory.Name);
+			}
+
+			AddFilterForm addFilterDialog = new AddFilterForm (templates);
+
+			if (addFilterDialog.ShowDialog () == DialogResult.OK) {
+				int filterTypeIndex = addFilterDialog.SelectedFilter.Index;
+
+				// instantiate filter from factory
+				IImageFilter newFilter = filterFactories [filterTypeIndex].construct (this);
+				imageFilters.Add (newFilter);
+
+				refreshFilterList ();
+			}
 		}
 
 		private void buttonEditFilter_Click (object sender, EventArgs e) {

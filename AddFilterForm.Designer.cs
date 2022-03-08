@@ -24,7 +24,7 @@ namespace cg_proj_1 {
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent () {
-			this.listView1 = new System.Windows.Forms.ListView();
+			this.listViewTemplates = new System.Windows.Forms.ListView();
 			this.buttonAdd = new System.Windows.Forms.Button();
 			this.buttonCancel = new System.Windows.Forms.Button();
 			this.label1 = new System.Windows.Forms.Label();
@@ -32,23 +32,28 @@ namespace cg_proj_1 {
 			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
 			// 
-			// listView1
+			// listViewTemplates
 			// 
-			this.listView1.HideSelection = false;
-			this.listView1.Location = new System.Drawing.Point(6, 22);
-			this.listView1.Name = "listView1";
-			this.listView1.Size = new System.Drawing.Size(209, 149);
-			this.listView1.TabIndex = 0;
-			this.listView1.UseCompatibleStateImageBehavior = false;
+			this.listViewTemplates.HideSelection = false;
+			this.listViewTemplates.Location = new System.Drawing.Point(6, 22);
+			this.listViewTemplates.MultiSelect = false;
+			this.listViewTemplates.Name = "listViewTemplates";
+			this.listViewTemplates.Size = new System.Drawing.Size(209, 161);
+			this.listViewTemplates.TabIndex = 0;
+			this.listViewTemplates.UseCompatibleStateImageBehavior = false;
+			this.listViewTemplates.View = System.Windows.Forms.View.List;
+			this.listViewTemplates.SelectedIndexChanged += new System.EventHandler(this.listViewTemplates_SelectedIndexChanged);
 			// 
 			// buttonAdd
 			// 
+			this.buttonAdd.Enabled = false;
 			this.buttonAdd.Location = new System.Drawing.Point(158, 245);
 			this.buttonAdd.Name = "buttonAdd";
 			this.buttonAdd.Size = new System.Drawing.Size(75, 23);
 			this.buttonAdd.TabIndex = 1;
 			this.buttonAdd.Text = "Add";
 			this.buttonAdd.UseVisualStyleBackColor = true;
+			this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
 			// 
 			// buttonCancel
 			// 
@@ -70,25 +75,33 @@ namespace cg_proj_1 {
 			// 
 			// groupBox1
 			// 
-			this.groupBox1.Controls.Add(this.listView1);
-			this.groupBox1.Location = new System.Drawing.Point(12, 43);
+			this.groupBox1.Controls.Add(this.listViewTemplates);
+			this.groupBox1.Location = new System.Drawing.Point(12, 42);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(221, 177);
+			this.groupBox1.Size = new System.Drawing.Size(221, 189);
 			this.groupBox1.TabIndex = 4;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Filter Types";
 			// 
 			// AddFilterForm
 			// 
+			this.AcceptButton = this.buttonAdd;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.CancelButton = this.buttonCancel;
 			this.ClientSize = new System.Drawing.Size(245, 280);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.buttonCancel);
 			this.Controls.Add(this.buttonAdd);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+			this.MaximizeBox = false;
+			this.MinimizeBox = false;
 			this.Name = "AddFilterForm";
-			this.Text = "AddFilterForm";
+			this.ShowIcon = false;
+			this.ShowInTaskbar = false;
+			this.Text = "Add Filter";
+			this.TopMost = true;
 			this.groupBox1.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -97,7 +110,7 @@ namespace cg_proj_1 {
 
 		#endregion
 
-		private System.Windows.Forms.ListView listView1;
+		private System.Windows.Forms.ListView listViewTemplates;
 		private System.Windows.Forms.Button buttonAdd;
 		private System.Windows.Forms.Button buttonCancel;
 		private System.Windows.Forms.Label label1;

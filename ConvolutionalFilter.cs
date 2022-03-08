@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 
 namespace cg_proj_1 {
-	class ConvolutionalFilter : IImageFilter {
+	abstract class ConvolutionalFilter : IImageFilter {
 		private float [] coefficients;
 		private int width, height;
 
@@ -28,6 +28,8 @@ namespace cg_proj_1 {
 				Array.Copy (value, coefficients, width * height);
 			}
 		}
+
+		public abstract string Name { get; }
 
 		public ConvolutionalFilter (int width, int height, float [] coefficients) {
 			this.width = width;
