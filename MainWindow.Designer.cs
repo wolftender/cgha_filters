@@ -29,12 +29,14 @@ namespace cg_proj_1 {
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.loadImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.saveImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.newFilterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.loadFilterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.refreshPreviewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.autoRefreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.applyFilterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.editFilterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.addFilterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.loadFilterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.clearAllFiltersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.aboutFilterEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -43,10 +45,14 @@ namespace cg_proj_1 {
 			this.pictureBox2 = new System.Windows.Forms.PictureBox();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.filtersGroupBox = new System.Windows.Forms.GroupBox();
+			this.activeFiltersList = new System.Windows.Forms.ListView();
 			this.buttonDeleteFilter = new System.Windows.Forms.Button();
 			this.buttonEditFilter = new System.Windows.Forms.Button();
 			this.buttonAddFilter = new System.Windows.Forms.Button();
-			this.listBoxFilters = new System.Windows.Forms.ListBox();
+			this.imageGroupBox = new System.Windows.Forms.GroupBox();
+			this.dataGridView1 = new System.Windows.Forms.DataGridView();
+			this.Property = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.menuStrip1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
@@ -57,6 +63,8 @@ namespace cg_proj_1 {
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.filtersGroupBox.SuspendLayout();
+			this.imageGroupBox.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// mainStatusStrip
@@ -71,6 +79,7 @@ namespace cg_proj_1 {
 			// 
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
+            this.viewToolStripMenuItem,
             this.editToolStripMenuItem,
             this.aboutToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -84,8 +93,6 @@ namespace cg_proj_1 {
 			this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.loadImageToolStripMenuItem,
             this.saveImageToolStripMenuItem,
-            this.newFilterToolStripMenuItem,
-            this.loadFilterToolStripMenuItem,
             this.exitToolStripMenuItem});
 			this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
 			this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
@@ -96,51 +103,70 @@ namespace cg_proj_1 {
 			this.loadImageToolStripMenuItem.Name = "loadImageToolStripMenuItem";
 			this.loadImageToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
 			this.loadImageToolStripMenuItem.Text = "Load Image";
+			this.loadImageToolStripMenuItem.Click += new System.EventHandler(this.loadImageToolStripMenuItem_Click);
 			// 
 			// saveImageToolStripMenuItem
 			// 
 			this.saveImageToolStripMenuItem.Name = "saveImageToolStripMenuItem";
 			this.saveImageToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
 			this.saveImageToolStripMenuItem.Text = "Save Image";
-			// 
-			// newFilterToolStripMenuItem
-			// 
-			this.newFilterToolStripMenuItem.Name = "newFilterToolStripMenuItem";
-			this.newFilterToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
-			this.newFilterToolStripMenuItem.Text = "New Filter";
-			// 
-			// loadFilterToolStripMenuItem
-			// 
-			this.loadFilterToolStripMenuItem.Name = "loadFilterToolStripMenuItem";
-			this.loadFilterToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
-			this.loadFilterToolStripMenuItem.Text = "Load Filter";
+			this.saveImageToolStripMenuItem.Click += new System.EventHandler(this.saveImageToolStripMenuItem_Click);
 			// 
 			// exitToolStripMenuItem
 			// 
 			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
 			this.exitToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
 			this.exitToolStripMenuItem.Text = "Exit";
+			this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+			// 
+			// viewToolStripMenuItem
+			// 
+			this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.refreshPreviewToolStripMenuItem,
+            this.autoRefreshToolStripMenuItem});
+			this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+			this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+			this.viewToolStripMenuItem.Text = "View";
+			// 
+			// refreshPreviewToolStripMenuItem
+			// 
+			this.refreshPreviewToolStripMenuItem.Name = "refreshPreviewToolStripMenuItem";
+			this.refreshPreviewToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+			this.refreshPreviewToolStripMenuItem.Text = "Refresh Preview";
+			// 
+			// autoRefreshToolStripMenuItem
+			// 
+			this.autoRefreshToolStripMenuItem.Name = "autoRefreshToolStripMenuItem";
+			this.autoRefreshToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+			this.autoRefreshToolStripMenuItem.Text = "Auto Refresh";
 			// 
 			// editToolStripMenuItem
 			// 
 			this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.applyFilterToolStripMenuItem,
-            this.editFilterToolStripMenuItem});
+            this.addFilterToolStripMenuItem,
+            this.loadFilterToolStripMenuItem,
+            this.clearAllFiltersToolStripMenuItem});
 			this.editToolStripMenuItem.Name = "editToolStripMenuItem";
 			this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
 			this.editToolStripMenuItem.Text = "Edit";
 			// 
-			// applyFilterToolStripMenuItem
+			// addFilterToolStripMenuItem
 			// 
-			this.applyFilterToolStripMenuItem.Name = "applyFilterToolStripMenuItem";
-			this.applyFilterToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
-			this.applyFilterToolStripMenuItem.Text = "Apply Filter";
+			this.addFilterToolStripMenuItem.Name = "addFilterToolStripMenuItem";
+			this.addFilterToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.addFilterToolStripMenuItem.Text = "Add Filter";
 			// 
-			// editFilterToolStripMenuItem
+			// loadFilterToolStripMenuItem
 			// 
-			this.editFilterToolStripMenuItem.Name = "editFilterToolStripMenuItem";
-			this.editFilterToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
-			this.editFilterToolStripMenuItem.Text = "Edit Filter";
+			this.loadFilterToolStripMenuItem.Name = "loadFilterToolStripMenuItem";
+			this.loadFilterToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.loadFilterToolStripMenuItem.Text = "Load Filter";
+			// 
+			// clearAllFiltersToolStripMenuItem
+			// 
+			this.clearAllFiltersToolStripMenuItem.Name = "clearAllFiltersToolStripMenuItem";
+			this.clearAllFiltersToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.clearAllFiltersToolStripMenuItem.Text = "Clear All Filters";
 			// 
 			// aboutToolStripMenuItem
 			// 
@@ -192,7 +218,7 @@ namespace cg_proj_1 {
 			// 
 			// pictureBox1
 			// 
-			this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.pictureBox1.Location = new System.Drawing.Point(463, 148);
 			this.pictureBox1.Name = "pictureBox1";
 			this.pictureBox1.Size = new System.Drawing.Size(454, 429);
@@ -201,7 +227,7 @@ namespace cg_proj_1 {
 			// 
 			// pictureBox2
 			// 
-			this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.pictureBox2.Location = new System.Drawing.Point(3, 148);
 			this.pictureBox2.Name = "pictureBox2";
 			this.pictureBox2.Size = new System.Drawing.Size(454, 429);
@@ -216,6 +242,7 @@ namespace cg_proj_1 {
 			this.tableLayoutPanel1.ColumnCount = 1;
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
 			this.tableLayoutPanel1.Controls.Add(this.filtersGroupBox, 0, 1);
+			this.tableLayoutPanel1.Controls.Add(this.imageGroupBox, 0, 0);
 			this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
 			this.tableLayoutPanel1.RowCount = 2;
@@ -226,16 +253,25 @@ namespace cg_proj_1 {
 			// 
 			// filtersGroupBox
 			// 
+			this.filtersGroupBox.Controls.Add(this.activeFiltersList);
 			this.filtersGroupBox.Controls.Add(this.buttonDeleteFilter);
 			this.filtersGroupBox.Controls.Add(this.buttonEditFilter);
 			this.filtersGroupBox.Controls.Add(this.buttonAddFilter);
-			this.filtersGroupBox.Controls.Add(this.listBoxFilters);
 			this.filtersGroupBox.Location = new System.Drawing.Point(3, 228);
 			this.filtersGroupBox.Name = "filtersGroupBox";
-			this.filtersGroupBox.Size = new System.Drawing.Size(228, 269);
+			this.filtersGroupBox.Size = new System.Drawing.Size(228, 278);
 			this.filtersGroupBox.TabIndex = 0;
 			this.filtersGroupBox.TabStop = false;
 			this.filtersGroupBox.Text = "Filters";
+			// 
+			// activeFiltersList
+			// 
+			this.activeFiltersList.HideSelection = false;
+			this.activeFiltersList.Location = new System.Drawing.Point(6, 22);
+			this.activeFiltersList.Name = "activeFiltersList";
+			this.activeFiltersList.Size = new System.Drawing.Size(214, 139);
+			this.activeFiltersList.TabIndex = 4;
+			this.activeFiltersList.UseCompatibleStateImageBehavior = false;
 			// 
 			// buttonDeleteFilter
 			// 
@@ -245,6 +281,7 @@ namespace cg_proj_1 {
 			this.buttonDeleteFilter.TabIndex = 3;
 			this.buttonDeleteFilter.Text = "Delete Filter";
 			this.buttonDeleteFilter.UseVisualStyleBackColor = true;
+			this.buttonDeleteFilter.Click += new System.EventHandler(this.buttonDeleteFilter_Click);
 			// 
 			// buttonEditFilter
 			// 
@@ -255,6 +292,7 @@ namespace cg_proj_1 {
 			this.buttonEditFilter.TabIndex = 2;
 			this.buttonEditFilter.Text = "Edit Filter";
 			this.buttonEditFilter.UseVisualStyleBackColor = true;
+			this.buttonEditFilter.Click += new System.EventHandler(this.buttonEditFilter_Click);
 			// 
 			// buttonAddFilter
 			// 
@@ -264,15 +302,45 @@ namespace cg_proj_1 {
 			this.buttonAddFilter.TabIndex = 1;
 			this.buttonAddFilter.Text = "Add Filter";
 			this.buttonAddFilter.UseVisualStyleBackColor = true;
+			this.buttonAddFilter.Click += new System.EventHandler(this.buttonAddFilter_Click);
 			// 
-			// listBoxFilters
+			// imageGroupBox
 			// 
-			this.listBoxFilters.FormattingEnabled = true;
-			this.listBoxFilters.ItemHeight = 15;
-			this.listBoxFilters.Location = new System.Drawing.Point(6, 22);
-			this.listBoxFilters.Name = "listBoxFilters";
-			this.listBoxFilters.Size = new System.Drawing.Size(214, 139);
-			this.listBoxFilters.TabIndex = 0;
+			this.imageGroupBox.Controls.Add(this.dataGridView1);
+			this.imageGroupBox.Location = new System.Drawing.Point(3, 3);
+			this.imageGroupBox.Name = "imageGroupBox";
+			this.imageGroupBox.Size = new System.Drawing.Size(228, 219);
+			this.imageGroupBox.TabIndex = 1;
+			this.imageGroupBox.TabStop = false;
+			this.imageGroupBox.Text = "Image";
+			// 
+			// dataGridView1
+			// 
+			this.dataGridView1.AllowUserToAddRows = false;
+			this.dataGridView1.AllowUserToDeleteRows = false;
+			this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Property,
+            this.Value});
+			this.dataGridView1.Location = new System.Drawing.Point(13, 22);
+			this.dataGridView1.Name = "dataGridView1";
+			this.dataGridView1.ReadOnly = true;
+			this.dataGridView1.RowTemplate.Height = 25;
+			this.dataGridView1.Size = new System.Drawing.Size(207, 134);
+			this.dataGridView1.TabIndex = 0;
+			// 
+			// Property
+			// 
+			this.Property.HeaderText = "Property";
+			this.Property.Name = "Property";
+			this.Property.ReadOnly = true;
+			// 
+			// Value
+			// 
+			this.Value.HeaderText = "Value";
+			this.Value.Name = "Value";
+			this.Value.ReadOnly = true;
 			// 
 			// MainWindow
 			// 
@@ -296,6 +364,8 @@ namespace cg_proj_1 {
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.filtersGroupBox.ResumeLayout(false);
+			this.imageGroupBox.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -308,24 +378,30 @@ namespace cg_proj_1 {
 		private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem loadImageToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem saveImageToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem newFilterToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem loadFilterToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem applyFilterToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem editFilterToolStripMenuItem;
 		private System.Windows.Forms.SplitContainer splitContainer1;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 		private System.Windows.Forms.GroupBox filtersGroupBox;
 		private System.Windows.Forms.Button buttonDeleteFilter;
 		private System.Windows.Forms.Button buttonEditFilter;
 		private System.Windows.Forms.Button buttonAddFilter;
-		private System.Windows.Forms.ListBox listBoxFilters;
 		private System.Windows.Forms.ToolStripMenuItem aboutFilterEditorToolStripMenuItem;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
 		private System.Windows.Forms.PictureBox pictureBox1;
 		private System.Windows.Forms.PictureBox pictureBox2;
+		private System.Windows.Forms.ListView activeFiltersList;
+		private System.Windows.Forms.ToolStripMenuItem addFilterToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem loadFilterToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem clearAllFiltersToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem refreshPreviewToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem autoRefreshToolStripMenuItem;
+		private System.Windows.Forms.GroupBox imageGroupBox;
+		private System.Windows.Forms.DataGridView dataGridView1;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Property;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Value;
 	}
 }
 
