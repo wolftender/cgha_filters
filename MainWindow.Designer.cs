@@ -272,9 +272,11 @@ namespace cg_proj_1 {
 			this.activeFiltersList.TabIndex = 4;
 			this.activeFiltersList.UseCompatibleStateImageBehavior = false;
 			this.activeFiltersList.View = System.Windows.Forms.View.List;
+			this.activeFiltersList.SelectedIndexChanged += new System.EventHandler(this.activeFiltersList_SelectedIndexChanged);
 			// 
 			// buttonDeleteFilter
 			// 
+			this.buttonDeleteFilter.Enabled = false;
 			this.buttonDeleteFilter.Location = new System.Drawing.Point(6, 225);
 			this.buttonDeleteFilter.Name = "buttonDeleteFilter";
 			this.buttonDeleteFilter.Size = new System.Drawing.Size(224, 23);

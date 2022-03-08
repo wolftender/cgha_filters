@@ -17,7 +17,7 @@ namespace cg_proj_1.Filters {
 			}) { }
 
 		public void edit (MainWindow mainWindow) {
-			IntegerDialogForm numberInput = new IntegerDialogForm ("Naive blur", "Enter matrix size", 3, 1, 13);
+			IntegerDialogForm numberInput = new IntegerDialogForm ("Naive blur", "Enter matrix size", Width, 1, 13);
 			
 			if (numberInput.ShowDialog (mainWindow) == System.Windows.Forms.DialogResult.OK) {
 				int size = numberInput.InputNumber;

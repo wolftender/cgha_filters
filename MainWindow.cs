@@ -38,6 +38,8 @@ namespace cg_proj_1 {
 
 		private List<FilterFactory> filterFactories;
 		private List<IImageFilter> imageFilters;
+		private IImageFilter selectedFilter;
+		private int selectedFilterIndex;
 
 		// bitmaps to display
 		private Bitmap bitmap;
@@ -132,11 +134,22 @@ namespace cg_proj_1 {
 		}
 
 		private void buttonEditFilter_Click (object sender, EventArgs e) {
-
+			if (selectedFilter != null) {
+				if (selectedFilter is IEditableFilter) {
+					(selectedFilter as IEditableFilter).edit (this);
+					refreshView ();
+				}
+			}
 		}
 
 		private void buttonDeleteFilter_Click (object sender, EventArgs e) {
+			if (selectedFilter != null) {
+				imageFilters.Remove (selectedFilter);
+				selectedFilter = null;
 
+				refreshView ();
+				refreshFilterList ();
+			}
 		}
 
 		private void loadImageToolStripMenuItem_Click (object sender, EventArgs e) {
@@ -167,6 +180,25 @@ namespace cg_proj_1 {
 
 		private void deleteAllFiltersToolStripMenuItem_Click (object sender, EventArgs e) {
 
+		}
+
+		private void activeFiltersList_SelectedIndexChanged (object sender, EventArgs e) {
+			buttonDeleteFilter.Enabled = false;
+			buttonEditFilter.Enabled = false;
+
+			if (activeFiltersList.SelectedItems.Count == 1) {
+				int index = activeFiltersList.SelectedItems [0].Index;
+				
+				if (imageFilters.Count > index) {
+					IImageFilter filter = imageFilters [index];
+
+					selectedFilter = filter;
+					selectedFilterIndex = index;
+
+					buttonDeleteFilter.Enabled = true;
+					buttonEditFilter.Enabled = (filter is IEditableFilter);
+				}
+			}
 		}
 	}
 }
