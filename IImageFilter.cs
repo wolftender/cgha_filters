@@ -8,7 +8,7 @@ using System.Drawing;
 namespace cg_proj_1 {
 	interface IImageFilter {
 		string Name { get; }
-		byte [] apply (byte [] bitmap);
+		byte [] apply (byte [] bitmap, int width, int height, int stride);
 	}
 
 	interface IEditableFilter {

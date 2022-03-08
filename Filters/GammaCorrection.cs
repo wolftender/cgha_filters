@@ -9,7 +9,7 @@ namespace cg_proj_1.Filters {
 	class GammaCorrection : IImageFilter {
 		public string Name => "Gamma Correct.";
 
-		public byte [] apply (byte [] bitmap) {
+		public byte [] apply (byte [] bitmap, int width, int height, int stride) {
 			throw new NotImplementedException ();
 		}
 	}

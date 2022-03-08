@@ -28,7 +28,7 @@ namespace cg_proj_1 {
 			public override IImageFilter construct (MainWindow mainWindow) {
 				T filter = new T ();
 
-				if (typeof (T).IsSubclassOf (typeof (IEditableFilter))) {
+				if (filter is IEditableFilter) {
 					(filter as IEditableFilter).edit (mainWindow);
 				}
 
@@ -62,6 +62,7 @@ namespace cg_proj_1 {
 			filterFactories.Add (new FilterFactory<Filters.BrightnessCorrection> ("Brightness correction"));
 			filterFactories.Add (new FilterFactory<Filters.ContrastEnhance> ("Contrast enhnancement"));
 			filterFactories.Add (new FilterFactory<Filters.GammaCorrection> ("Gamma correction"));
+			filterFactories.Add (new FilterFactory<Filters.SimpleBlur> ("Naive blur"));
 
 			// end of filter registration
 
@@ -78,7 +79,7 @@ namespace cg_proj_1 {
 			bitmap.UnlockBits (bitmapData);
 
 			foreach (IImageFilter filter in imageFilters) {
-				byte [] filteredPixels = filter.apply (pixels);
+				byte [] filteredPixels = filter.apply (pixels, bitmap.Width, bitmap.Height, bitmapData.Stride);
 				Array.Copy (filteredPixels, pixels, size);
 			}
 

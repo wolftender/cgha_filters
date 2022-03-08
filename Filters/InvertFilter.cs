@@ -9,7 +9,7 @@ namespace cg_proj_1.Filters {
 	class InvertFilter : IImageFilter {
 		public string Name => "Invert Filter";
 
-		public byte [] apply (byte [] bitmap) {
+		public byte [] apply (byte [] bitmap, int width, int height, int stride) {
 			byte [] filtered = new byte [bitmap.Length];
 
 			unsafe {
