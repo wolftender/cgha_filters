@@ -53,16 +53,17 @@ namespace cg_proj_1 {
 		public byte [] apply (byte [] bitmap, int imageWidth, int imageHeight, int stride) {
 			byte [] output = new byte [bitmap.Length];
 			int channels = stride / imageWidth;
+				
+			float divisor = coefficients.Sum ();
 
-			int cx, cy, fx, fy, offsetX, offsetY;
-			float sum, divisor = coefficients.Sum ();
+			Parallel.For (0, channels, (int channel) => {
+				int cx, cy, fx, fy, offsetX, offsetY;
+				float sum;
 
-			for (int i = 0; i < imageWidth * imageHeight; ++i) {
-				cx = i % imageWidth;
-				cy = i / imageWidth;
+				for (int i = 0; i < imageWidth * imageHeight; ++i) {
+					cx = i % imageWidth;
+					cy = i / imageWidth;
 
-				// for each channel
-				for (int channel = 0; channel < channels; ++channel) {
 					// apply filter to fragment at (cx, cy)
 					sum = 0.0f;
 
@@ -81,7 +82,7 @@ namespace cg_proj_1 {
 
 					output [((cy * imageWidth) + cx) * channels + channel] = (byte) Math.Round ((255 * sum) / divisor);
 				}
-			}
+			});
 
 			return output;
 		}
