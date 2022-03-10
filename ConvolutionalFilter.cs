@@ -54,6 +54,7 @@ namespace cg_proj_1 {
 			int channels = stride / imageWidth;
 			float divisor = coefficients.Sum ();
 			int padding = 4 - (imageWidth * channels % 4);
+			int scanlineWidth = imageWidth * channels + padding;
 
 			byte [] output = new byte [bitmap.Length];
 
@@ -79,10 +80,10 @@ namespace cg_proj_1 {
 							fx = Math.Min (Math.Max (cx + offsetX, 0), imageWidth - 1);
 							fy = Math.Min (Math.Max (cy + offsetY, 0), imageHeight - 1);
 
-							sum += Coefficients [j] * ((float) bitmap [fy * (imageWidth * channels + padding) + fx * channels + channel] / 255.0f);
+							sum += Coefficients [j] * ((float) bitmap [fy * scanlineWidth + fx * channels + channel] / 255.0f);
 						}
 
-						output [cy * (imageWidth * channels + padding) + cx * channels + channel] = (byte) Math.Round ((255 * sum) / divisor);
+						output [cy * scanlineWidth + cx * channels + channel] = (byte) Math.Round ((255 * sum) / divisor);
 					}
 				});
 			}
