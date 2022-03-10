@@ -36,7 +36,7 @@ namespace cg_proj_1 {
 		private void buttonApply_Click (object sender, EventArgs e) {
 			inputNumber = (int) numericInput.Value;
 
-			if (inputNumber > min && inputNumber < max) {
+			if (inputNumber >= min && inputNumber <= max) {
 				Close ();
 				DialogResult = DialogResult.OK;
 			}

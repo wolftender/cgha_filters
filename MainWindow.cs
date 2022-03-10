@@ -160,8 +160,15 @@ namespace cg_proj_1 {
 					string filename = openFileDialog.FileName;
 
 					// load bitmap from file
-					bitmap = new Bitmap (Image.FromFile (filename));
+					Image image = Image.FromFile (filename);
+
+					bitmap = new Bitmap (image.Width, image.Height, PixelFormat.Format24bppRgb);
+					Graphics ctx = Graphics.FromImage (bitmap);
+					ctx.DrawImage (image, 0, 0);
+					ctx.Dispose ();
+
 					filteredBitmap = bitmap;
+					image.Dispose ();
 
 					refreshView ();
 				} catch (Exception exception) {

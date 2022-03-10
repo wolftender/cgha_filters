@@ -53,6 +53,7 @@ namespace cg_proj_1 {
 		public byte [] apply (byte [] bitmap, int imageWidth, int imageHeight, int stride) {
 			int channels = stride / imageWidth;
 			float divisor = coefficients.Sum ();
+			int padding = 4 - (imageWidth * channels % 4);
 
 			byte [] output = new byte [bitmap.Length];
 
@@ -78,10 +79,10 @@ namespace cg_proj_1 {
 							fx = Math.Min (Math.Max (cx + offsetX, 0), imageWidth - 1);
 							fy = Math.Min (Math.Max (cy + offsetY, 0), imageHeight - 1);
 
-							sum += Coefficients [j] * ((float) bitmap [((fy * imageWidth) + fx) * channels + channel] / 255.0f);
+							sum += Coefficients [j] * ((float) bitmap [fy * (imageWidth * channels + padding) + fx * channels + channel] / 255.0f);
 						}
 
-						output [((cy * imageWidth) + cx) * channels + channel] = (byte) Math.Round ((255 * sum) / divisor);
+						output [cy * (imageWidth * channels + padding) + cx * channels + channel] = (byte) Math.Round ((255 * sum) / divisor);
 					}
 				});
 			}
