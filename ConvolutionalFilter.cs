@@ -53,7 +53,7 @@ namespace cg_proj_1 {
 		public byte [] apply (byte [] bitmap, int imageWidth, int imageHeight, int stride) {
 			int channels = stride / imageWidth;
 			float divisor = coefficients.Sum ();
-			int padding = 4 - (imageWidth * channels % 4);
+			int padding = (4 - (imageWidth * channels % 4)) % 4;
 			int scanlineWidth = imageWidth * channels + padding;
 
 			byte [] output = new byte [bitmap.Length];

@@ -60,6 +60,7 @@ namespace cg_proj_1 {
 			// register types of filters (hardcoded)
 			// this may be done using metaprogramming later (maybe)
 
+			filterFactories.Add (new FilterFactory<Filters.CustomMatrixFilter> ("Custom (Convolutional)"));
 			filterFactories.Add (new FilterFactory<Filters.InvertFilter> ("Invert"));
 			filterFactories.Add (new FilterFactory<Filters.BrightnessCorrection> ("Brightness correction"));
 			filterFactories.Add (new FilterFactory<Filters.ContrastEnhance> ("Contrast enhnancement"));
