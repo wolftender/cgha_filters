@@ -43,10 +43,11 @@ namespace cg_proj_1 {
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.filtersGroupBox = new System.Windows.Forms.GroupBox();
 			this.activeFiltersList = new System.Windows.Forms.ListView();
+			this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
 			this.buttonDeleteFilter = new System.Windows.Forms.Button();
 			this.buttonEditFilter = new System.Windows.Forms.Button();
 			this.buttonAddFilter = new System.Windows.Forms.Button();
-			this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
+			this.buttonCustom = new System.Windows.Forms.Button();
 			this.menuStrip1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
@@ -228,13 +229,14 @@ namespace cg_proj_1 {
 			// 
 			// filtersGroupBox
 			// 
+			this.filtersGroupBox.Controls.Add(this.buttonCustom);
 			this.filtersGroupBox.Controls.Add(this.activeFiltersList);
 			this.filtersGroupBox.Controls.Add(this.buttonDeleteFilter);
 			this.filtersGroupBox.Controls.Add(this.buttonEditFilter);
 			this.filtersGroupBox.Controls.Add(this.buttonAddFilter);
 			this.filtersGroupBox.Location = new System.Drawing.Point(3, 3);
 			this.filtersGroupBox.Name = "filtersGroupBox";
-			this.filtersGroupBox.Size = new System.Drawing.Size(236, 278);
+			this.filtersGroupBox.Size = new System.Drawing.Size(236, 285);
 			this.filtersGroupBox.TabIndex = 0;
 			this.filtersGroupBox.TabStop = false;
 			this.filtersGroupBox.Text = "Filters";
@@ -252,6 +254,11 @@ namespace cg_proj_1 {
 			this.activeFiltersList.UseCompatibleStateImageBehavior = false;
 			this.activeFiltersList.View = System.Windows.Forms.View.Details;
 			this.activeFiltersList.SelectedIndexChanged += new System.EventHandler(this.activeFiltersList_SelectedIndexChanged);
+			// 
+			// columnHeader1
+			// 
+			this.columnHeader1.Text = "Filter Name";
+			this.columnHeader1.Width = 160;
 			// 
 			// buttonDeleteFilter
 			// 
@@ -285,10 +292,16 @@ namespace cg_proj_1 {
 			this.buttonAddFilter.UseVisualStyleBackColor = true;
 			this.buttonAddFilter.Click += new System.EventHandler(this.buttonAddFilter_Click);
 			// 
-			// columnHeader1
+			// buttonCustom
 			// 
-			this.columnHeader1.Text = "Filter Name";
-			this.columnHeader1.Width = 160;
+			this.buttonCustom.Enabled = false;
+			this.buttonCustom.Location = new System.Drawing.Point(7, 255);
+			this.buttonCustom.Name = "buttonCustom";
+			this.buttonCustom.Size = new System.Drawing.Size(220, 23);
+			this.buttonCustom.TabIndex = 5;
+			this.buttonCustom.Text = "Make Custom";
+			this.buttonCustom.UseVisualStyleBackColor = true;
+			this.buttonCustom.Click += new System.EventHandler(this.buttonCustom_Click);
 			// 
 			// MainWindow
 			// 
@@ -342,6 +355,7 @@ namespace cg_proj_1 {
 		private System.Windows.Forms.ToolStripMenuItem loadFilterToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem clearAllFiltersToolStripMenuItem;
 		private System.Windows.Forms.ColumnHeader columnHeader1;
+		private System.Windows.Forms.Button buttonCustom;
 	}
 }
 

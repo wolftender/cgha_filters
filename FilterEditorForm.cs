@@ -135,5 +135,10 @@ namespace cg_proj_1 {
 		private void numericPivotY_ValueChanged (object sender, EventArgs e) {
 			pivotY = (int) Math.Min (Math.Max (numericPivotY.Value, 0), matrixHeight);
 		}
+
+		private void buttonAccept_Click (object sender, EventArgs e) {
+			DialogResult = DialogResult.OK;
+			Close ();
+		}
 	}
 }

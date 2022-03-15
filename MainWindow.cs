@@ -182,7 +182,21 @@ namespace cg_proj_1 {
 		}
 
 		private void saveImageToolStripMenuItem_Click (object sender, EventArgs e) {
+			SaveFileDialog saveFileDialog = new SaveFileDialog ();
+			saveFileDialog.DefaultExt = "png";
 
+			if (saveFileDialog.ShowDialog () == DialogResult.OK) {
+				try {
+					if (filteredBitmap != null) {
+						refreshView ();
+						filteredBitmap.Save (saveFileDialog.FileName);
+					} else {
+						MessageBox.Show ("bitmap is null", "save error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					}
+				} catch (Exception exception) {
+					MessageBox.Show ("failed to save filtered image to file, error:\n" + exception.Message, "save error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
+			}
 		}
 
 		private void exitToolStripMenuItem_Click (object sender, EventArgs e) {
@@ -190,7 +204,13 @@ namespace cg_proj_1 {
 		}
 
 		private void deleteAllFiltersToolStripMenuItem_Click (object sender, EventArgs e) {
+			if (MessageBox.Show ("Are you sure", "Are you sure that you want to delete all filters?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
+				selectedFilter = null;
+				imageFilters.Clear ();
 
+				refreshView ();
+				refreshFilterList ();
+			}
 		}
 
 		private void activeFiltersList_SelectedIndexChanged (object sender, EventArgs e) {
@@ -208,6 +228,19 @@ namespace cg_proj_1 {
 
 					buttonDeleteFilter.Enabled = true;
 					buttonEditFilter.Enabled = (filter is IEditableFilter);
+					buttonCustom.Enabled = (filter is ConvolutionalFilter);
+				}
+			}
+		}
+
+		private void buttonCustom_Click (object sender, EventArgs e) {
+			if (selectedFilter != null) {
+				if (selectedFilter is ConvolutionalFilter) {
+					Filters.CustomMatrixFilter newFilter = Filters.CustomMatrixFilter.From (selectedFilter as ConvolutionalFilter);
+					imageFilters.Add (newFilter);
+
+					refreshView ();
+					refreshFilterList ();
 				}
 			}
 		}

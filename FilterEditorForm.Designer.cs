@@ -189,6 +189,7 @@ namespace cg_proj_1 {
 			this.buttonAccept.TabIndex = 0;
 			this.buttonAccept.Text = "Apply";
 			this.buttonAccept.UseVisualStyleBackColor = true;
+			this.buttonAccept.Click += new System.EventHandler(this.buttonAccept_Click);
 			// 
 			// dataGridFilter
 			// 

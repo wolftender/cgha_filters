@@ -22,5 +22,12 @@ namespace cg_proj_1.Filters {
 
 			create (filterEditor.MatrixWidth, filterEditor.MatrixHeight, filterEditor.Pivot, filterEditor.MatrixValues);
 		}
+
+		public static CustomMatrixFilter From (ConvolutionalFilter filter) {
+			CustomMatrixFilter newFilter = new CustomMatrixFilter ();
+			newFilter.create (filter.Width, filter.Height, filter.Anchor, filter.Coefficients);
+
+			return newFilter;
+		}
 	}
 }
