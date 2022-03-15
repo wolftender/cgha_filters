@@ -29,11 +29,15 @@ namespace cg_proj_1 {
 			this.buttonCancel = new System.Windows.Forms.Button();
 			this.label1 = new System.Windows.Forms.Label();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
 			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// listViewTemplates
 			// 
+			this.listViewTemplates.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1});
+			this.listViewTemplates.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
 			this.listViewTemplates.HideSelection = false;
 			this.listViewTemplates.Location = new System.Drawing.Point(6, 22);
 			this.listViewTemplates.MultiSelect = false;
@@ -41,7 +45,7 @@ namespace cg_proj_1 {
 			this.listViewTemplates.Size = new System.Drawing.Size(209, 161);
 			this.listViewTemplates.TabIndex = 0;
 			this.listViewTemplates.UseCompatibleStateImageBehavior = false;
-			this.listViewTemplates.View = System.Windows.Forms.View.List;
+			this.listViewTemplates.View = System.Windows.Forms.View.Details;
 			this.listViewTemplates.SelectedIndexChanged += new System.EventHandler(this.listViewTemplates_SelectedIndexChanged);
 			// 
 			// buttonAdd
@@ -83,6 +87,11 @@ namespace cg_proj_1 {
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Filter Types";
 			// 
+			// columnHeader1
+			// 
+			this.columnHeader1.Text = "Filter";
+			this.columnHeader1.Width = 160;
+			// 
 			// AddFilterForm
 			// 
 			this.AcceptButton = this.buttonAdd;
@@ -115,5 +124,6 @@ namespace cg_proj_1 {
 		private System.Windows.Forms.Button buttonCancel;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.GroupBox groupBox1;
+		private System.Windows.Forms.ColumnHeader columnHeader1;
 	}
 }

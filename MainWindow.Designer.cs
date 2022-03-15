@@ -30,9 +30,6 @@ namespace cg_proj_1 {
 			this.loadImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.saveImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.refreshPreviewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.autoRefreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.addFilterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.loadFilterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,6 +46,7 @@ namespace cg_proj_1 {
 			this.buttonDeleteFilter = new System.Windows.Forms.Button();
 			this.buttonEditFilter = new System.Windows.Forms.Button();
 			this.buttonAddFilter = new System.Windows.Forms.Button();
+			this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
 			this.menuStrip1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
@@ -73,7 +71,6 @@ namespace cg_proj_1 {
 			// 
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.viewToolStripMenuItem,
             this.editToolStripMenuItem,
             this.aboutToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -112,27 +109,6 @@ namespace cg_proj_1 {
 			this.exitToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
 			this.exitToolStripMenuItem.Text = "Exit";
 			this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-			// 
-			// viewToolStripMenuItem
-			// 
-			this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.refreshPreviewToolStripMenuItem,
-            this.autoRefreshToolStripMenuItem});
-			this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-			this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-			this.viewToolStripMenuItem.Text = "View";
-			// 
-			// refreshPreviewToolStripMenuItem
-			// 
-			this.refreshPreviewToolStripMenuItem.Name = "refreshPreviewToolStripMenuItem";
-			this.refreshPreviewToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
-			this.refreshPreviewToolStripMenuItem.Text = "Refresh Preview";
-			// 
-			// autoRefreshToolStripMenuItem
-			// 
-			this.autoRefreshToolStripMenuItem.Name = "autoRefreshToolStripMenuItem";
-			this.autoRefreshToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
-			this.autoRefreshToolStripMenuItem.Text = "Auto Refresh";
 			// 
 			// editToolStripMenuItem
 			// 
@@ -265,13 +241,16 @@ namespace cg_proj_1 {
 			// 
 			// activeFiltersList
 			// 
+			this.activeFiltersList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1});
+			this.activeFiltersList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
 			this.activeFiltersList.HideSelection = false;
 			this.activeFiltersList.Location = new System.Drawing.Point(6, 22);
 			this.activeFiltersList.Name = "activeFiltersList";
 			this.activeFiltersList.Size = new System.Drawing.Size(224, 139);
 			this.activeFiltersList.TabIndex = 4;
 			this.activeFiltersList.UseCompatibleStateImageBehavior = false;
-			this.activeFiltersList.View = System.Windows.Forms.View.List;
+			this.activeFiltersList.View = System.Windows.Forms.View.Details;
 			this.activeFiltersList.SelectedIndexChanged += new System.EventHandler(this.activeFiltersList_SelectedIndexChanged);
 			// 
 			// buttonDeleteFilter
@@ -305,6 +284,11 @@ namespace cg_proj_1 {
 			this.buttonAddFilter.Text = "Add Filter";
 			this.buttonAddFilter.UseVisualStyleBackColor = true;
 			this.buttonAddFilter.Click += new System.EventHandler(this.buttonAddFilter_Click);
+			// 
+			// columnHeader1
+			// 
+			this.columnHeader1.Text = "Filter Name";
+			this.columnHeader1.Width = 160;
 			// 
 			// MainWindow
 			// 
@@ -357,9 +341,7 @@ namespace cg_proj_1 {
 		private System.Windows.Forms.ToolStripMenuItem addFilterToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem loadFilterToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem clearAllFiltersToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem refreshPreviewToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem autoRefreshToolStripMenuItem;
+		private System.Windows.Forms.ColumnHeader columnHeader1;
 	}
 }
 

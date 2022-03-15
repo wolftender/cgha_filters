@@ -83,7 +83,7 @@ namespace cg_proj_1 {
 							sum += Coefficients [j] * ((float) bitmap [fy * scanlineWidth + fx * channels + channel] / 255.0f);
 						}
 
-						output [cy * scanlineWidth + cx * channels + channel] = (byte) Math.Round ((255 * sum) / divisor);
+						output [cy * scanlineWidth + cx * channels + channel] = (byte) Math.Min (255, Math.Max (0, Math.Round ((255 * sum) / divisor)));
 					}
 				});
 			}
