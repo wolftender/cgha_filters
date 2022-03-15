@@ -9,9 +9,9 @@ namespace cg_proj_1.Filters {
 		public override string Name => "Edge Detection";
 
 		public EdgeDetectionFilter () : base (3, 3, new System.Drawing.Point (1, 1), new float [] {
-			0f, 0f, 0f,
-			-1f, 1f, 0f,
-			0f, 0f, 0f
+			-1f, -1f, -1f,
+			-1f, 8f, -1f,
+			-1f, -1f, -1f
 		}) { }
 	}
 }

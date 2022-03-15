@@ -119,7 +119,7 @@ namespace cg_proj_1 {
 			}
 		}
 
-		private void buttonAddFilter_Click (object sender, EventArgs e) {
+		private void addFilterDialog () {
 			List<string> templates = new List<string> ();
 			foreach (FilterFactory factory in filterFactories) {
 				templates.Add (factory.Name);
@@ -137,6 +137,10 @@ namespace cg_proj_1 {
 				refreshFilterList ();
 				refreshView ();
 			}
+		}
+
+		private void buttonAddFilter_Click (object sender, EventArgs e) {
+			addFilterDialog ();
 		}
 
 		private void buttonEditFilter_Click (object sender, EventArgs e) {
@@ -245,6 +249,10 @@ namespace cg_proj_1 {
 					refreshFilterList ();
 				}
 			}
+		}
+
+		private void addFilterToolStripMenuItem_Click (object sender, EventArgs e) {
+			addFilterDialog ();
 		}
 	}
 }

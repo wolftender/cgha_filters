@@ -42,12 +42,12 @@ namespace cg_proj_1 {
 			this.pictureBoxRaw = new System.Windows.Forms.PictureBox();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.filtersGroupBox = new System.Windows.Forms.GroupBox();
+			this.buttonCustom = new System.Windows.Forms.Button();
 			this.activeFiltersList = new System.Windows.Forms.ListView();
 			this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
 			this.buttonDeleteFilter = new System.Windows.Forms.Button();
 			this.buttonEditFilter = new System.Windows.Forms.Button();
 			this.buttonAddFilter = new System.Windows.Forms.Button();
-			this.buttonCustom = new System.Windows.Forms.Button();
 			this.menuStrip1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
@@ -93,21 +93,21 @@ namespace cg_proj_1 {
 			// loadImageToolStripMenuItem
 			// 
 			this.loadImageToolStripMenuItem.Name = "loadImageToolStripMenuItem";
-			this.loadImageToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+			this.loadImageToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.loadImageToolStripMenuItem.Text = "Load Image";
 			this.loadImageToolStripMenuItem.Click += new System.EventHandler(this.loadImageToolStripMenuItem_Click);
 			// 
 			// saveImageToolStripMenuItem
 			// 
 			this.saveImageToolStripMenuItem.Name = "saveImageToolStripMenuItem";
-			this.saveImageToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+			this.saveImageToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.saveImageToolStripMenuItem.Text = "Save Image";
 			this.saveImageToolStripMenuItem.Click += new System.EventHandler(this.saveImageToolStripMenuItem_Click);
 			// 
 			// exitToolStripMenuItem
 			// 
 			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-			this.exitToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+			this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.exitToolStripMenuItem.Text = "Exit";
 			this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
 			// 
@@ -124,19 +124,20 @@ namespace cg_proj_1 {
 			// addFilterToolStripMenuItem
 			// 
 			this.addFilterToolStripMenuItem.Name = "addFilterToolStripMenuItem";
-			this.addFilterToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.addFilterToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.addFilterToolStripMenuItem.Text = "Add Filter";
+			this.addFilterToolStripMenuItem.Click += new System.EventHandler(this.addFilterToolStripMenuItem_Click);
 			// 
 			// loadFilterToolStripMenuItem
 			// 
 			this.loadFilterToolStripMenuItem.Name = "loadFilterToolStripMenuItem";
-			this.loadFilterToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.loadFilterToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.loadFilterToolStripMenuItem.Text = "Load Filter";
 			// 
 			// clearAllFiltersToolStripMenuItem
 			// 
 			this.clearAllFiltersToolStripMenuItem.Name = "clearAllFiltersToolStripMenuItem";
-			this.clearAllFiltersToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.clearAllFiltersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.clearAllFiltersToolStripMenuItem.Text = "Clear All Filters";
 			// 
 			// aboutToolStripMenuItem
@@ -241,6 +242,17 @@ namespace cg_proj_1 {
 			this.filtersGroupBox.TabStop = false;
 			this.filtersGroupBox.Text = "Filters";
 			// 
+			// buttonCustom
+			// 
+			this.buttonCustom.Enabled = false;
+			this.buttonCustom.Location = new System.Drawing.Point(7, 255);
+			this.buttonCustom.Name = "buttonCustom";
+			this.buttonCustom.Size = new System.Drawing.Size(220, 23);
+			this.buttonCustom.TabIndex = 5;
+			this.buttonCustom.Text = "Make Custom";
+			this.buttonCustom.UseVisualStyleBackColor = true;
+			this.buttonCustom.Click += new System.EventHandler(this.buttonCustom_Click);
+			// 
 			// activeFiltersList
 			// 
 			this.activeFiltersList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -291,17 +303,6 @@ namespace cg_proj_1 {
 			this.buttonAddFilter.Text = "Add Filter";
 			this.buttonAddFilter.UseVisualStyleBackColor = true;
 			this.buttonAddFilter.Click += new System.EventHandler(this.buttonAddFilter_Click);
-			// 
-			// buttonCustom
-			// 
-			this.buttonCustom.Enabled = false;
-			this.buttonCustom.Location = new System.Drawing.Point(7, 255);
-			this.buttonCustom.Name = "buttonCustom";
-			this.buttonCustom.Size = new System.Drawing.Size(220, 23);
-			this.buttonCustom.TabIndex = 5;
-			this.buttonCustom.Text = "Make Custom";
-			this.buttonCustom.UseVisualStyleBackColor = true;
-			this.buttonCustom.Click += new System.EventHandler(this.buttonCustom_Click);
 			// 
 			// MainWindow
 			// 
