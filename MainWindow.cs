@@ -71,6 +71,12 @@ namespace cg_proj_1 {
 			filterFactories.Add (new FilterFactory<Filters.ContrastEnhance> ("Contrast enhnancement"));
 			filterFactories.Add (new FilterFactory<Filters.GammaCorrection> ("Gamma correction"));
 			filterFactories.Add (new FilterFactory<Filters.SimpleBlur> ("Naive blur"));
+			filterFactories.Add (new FilterFactory<Filters.LaplacianFilter> ("Laplacian of Gaussian"));
+
+			// LAB
+			filterFactories.Add (new FilterFactory<Filters.HueGrayscaleFilter> ("Isolate Hue"));
+			filterFactories.Add (new FilterFactory<Filters.SaturationGrayscaleFilter> ("Isolate Saturation"));
+			filterFactories.Add (new FilterFactory<Filters.ValueGrayscaleFilter> ("Isolate Value"));
 
 			// end of filter registration
 
