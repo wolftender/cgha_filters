@@ -31,6 +31,18 @@ namespace cg_proj_1.Filters.ColorSpace {
 				B = b;
 			}
 
+			public float distance (ColorVector a) {
+				return distance (this, a);
+			}
+
+			public float distance (float r, float g, float b) {
+				float dr = R - r;
+				float dg = G - g;
+				float db = B - b;
+
+				return (float) Math.Sqrt (dr * dr + dg * dg + db * db);
+			}
+
 			public static float distance (ColorVector a, ColorVector b) {
 				float dr = a.R - b.R;
 				float dg = a.G - b.G;
@@ -43,6 +55,8 @@ namespace cg_proj_1.Filters.ColorSpace {
 		public string Name => "K-Means Quantization";
 
 		private const int MAX_KMEANS_ITERATIONS = 30;
+		private const float KMEANS_EPSILON = 0.02f;
+
 		private void chooseRandomCentroids (List<ColorVector> centroids, ref ColorVector [] vectors, int numCentroids) {
 			// we select random centroids by performing following algorithm:
 			//  1. list all indices for vectors (1, ..., n)
@@ -137,11 +151,21 @@ namespace cg_proj_1.Filters.ColorSpace {
 				}
 
 				// compute new centroids
+				float nr, ng, nb, difference, maxDifference = 0.0f;
 				for (int i = 0; i < centroids.Count; ++i) {
-					centroids [i].R = sums [i].Item1.R / sums [i].Item2;
-					centroids [i].G = sums [i].Item1.G / sums [i].Item2;
-					centroids [i].B = sums [i].Item1.B / sums [i].Item2;
+					nr = sums [i].Item1.R / sums [i].Item2;
+					ng = sums [i].Item1.G / sums [i].Item2;
+					nb = sums [i].Item1.B / sums [i].Item2;
+
+					difference = centroids [i].distance (nr, ng, nb);
+					if (difference > maxDifference) maxDifference = difference;
+
+					centroids [i].R = nr;
+					centroids [i].G = ng;
+					centroids [i].B = nb;
 				}
+
+				if (maxDifference < KMEANS_EPSILON) break;
 
 				stopwatch.Stop ();
 				Debug.WriteLine ("[k-means] executed {0}-th iteration in {1} ms", iteration, stopwatch.ElapsedMilliseconds);
@@ -175,7 +199,7 @@ namespace cg_proj_1.Filters.ColorSpace {
 			List<ColorVector> palette;
 			int [] outPixels;
 
-			(palette, outPixels) = kmeans (ref pixels, 10);
+			(palette, outPixels) = kmeans (ref pixels, 30);
 
 			// output the pixels to the image
 			for (int i = 0; i < width * height; ++i) {
