@@ -62,6 +62,7 @@ namespace cg_proj_1 {
 
 			filterFactories.Add (new FilterFactory<Filters.CustomMatrixFilter> ("Custom (Convolutional)"));
 			filterFactories.Add (new FilterFactory<Filters.GrayscaleFilter> ("Grayscale"));
+			filterFactories.Add (new FilterFactory<Filters.ColorSpace.KMeansQuantization> ("K-Means Quantization"));
 			filterFactories.Add (new FilterFactory<Filters.GaussianSmoothing> ("Gaussian Smoothing"));
 			filterFactories.Add (new FilterFactory<Filters.SharpenFilter> ("Sharpen"));
 			filterFactories.Add (new FilterFactory<Filters.InvertFilter> ("Invert"));
