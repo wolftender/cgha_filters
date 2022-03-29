@@ -56,6 +56,10 @@ namespace cg_proj_1 {
 			int padding = (4 - (imageWidth * channels % 4)) % 4;
 			int scanlineWidth = imageWidth * channels + padding;
 
+			if (divisor == 0) {
+				divisor = 1.0f;
+			}
+
 			byte [] output = new byte [bitmap.Length];
 
 			unsafe {

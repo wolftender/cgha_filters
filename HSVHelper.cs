@@ -38,7 +38,10 @@ namespace cg_proj_1 {
 			if (M == m) {
 				Hp = 0.0f;
 			} else if (M == r) {
-				Hp = ((float) (g - b)) / ((float) (M - m)) % 6.0f;
+				Hp = ((float) (g - b)) / ((float) (M - m));
+				if (Hp < 0.0f) {
+					Hp = Hp + 6.0f;
+				}
 			} else if (M == g) {
 				Hp = ((float) (b - r)) / ((float) (M - m)) + 2.0f;
 			} else {
