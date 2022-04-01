@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace cg_proj_1.Filters.ColorSpace {
-	public class KMeansQuantization : IImageFilter {
+	public class KMeansQuantization : IImageFilter, IEditableFilter {
 		// structure representing the float-based color vector
 		private class ColorVector {
 			public float R { get; set; }
@@ -56,6 +56,8 @@ namespace cg_proj_1.Filters.ColorSpace {
 
 		private const int MAX_KMEANS_ITERATIONS = 30;
 		private const float KMEANS_EPSILON = 0.02f;
+
+		private int countColors = 30;
 
 		private void chooseRandomCentroids (List<ColorVector> centroids, ref ColorVector [] vectors, int numCentroids) {
 			// we select random centroids by performing following algorithm:
@@ -201,7 +203,7 @@ namespace cg_proj_1.Filters.ColorSpace {
 			List<ColorVector> palette;
 			int [] outPixels;
 
-			(palette, outPixels) = kmeans (pixels, 30);
+			(palette, outPixels) = kmeans (pixels, countColors);
 
 			// output the pixels to the image
 			for (int i = 0; i < width * height; ++i) {
@@ -217,7 +219,12 @@ namespace cg_proj_1.Filters.ColorSpace {
 		}
 
 		public void edit (MainWindow mainWindow) {
-			throw new NotImplementedException ();
+			IntegerDialogForm dialogForm = new IntegerDialogForm ("k-means", 
+				"enter target color count", countColors, 2, 100);
+
+			dialogForm.ShowDialog (mainWindow);
+
+			countColors = dialogForm.InputNumber;
 		}
 	}
 }
