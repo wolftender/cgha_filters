@@ -224,7 +224,7 @@ namespace cg_proj_1.Filters.ColorSpace {
 
 			dialogForm.ShowDialog (mainWindow);
 
-			countColors = dialogForm.InputNumber;
+			countColors = Math.Max (2, Math.Min (100, dialogForm.InputNumber));
 		}
 	}
 }
