@@ -88,7 +88,7 @@ namespace cg_proj_1.Filters.ColorSpace {
 			}
 		}
 
-		private (List<ColorVector>, int []) kmeans (ref ColorVector [] vectors, int numCentroids) {
+		private (List<ColorVector>, int []) kmeans (ColorVector [] vectors, int numCentroids) {
 			// performance measurements
 			Stopwatch stopwatch = new Stopwatch ();
 
@@ -128,26 +128,28 @@ namespace cg_proj_1.Filters.ColorSpace {
 				}
 
 				// for each vector
-				for (int v = 0; v < vectors.Length; ++v) {
+				Parallel.For (0, vectors.Length, (int v) => {
 					float minDistance = 10000.0f, distance;
-					int c;
 
 					// select lowest distance centroid
-					for (c = 0; c < centroids.Count; ++c) {
+					for (int c = 0; c < centroids.Count; ++c) {
 						distance = ColorVector.distance (vectors [v], centroids [c]);
 						if (distance < minDistance) {
 							minDistance = distance;
 							vectorCentroid [v] = c;
 						}
 					}
+				});
 
-					c = vectorCentroid [v];
+				int ct;
+				for (int v = 0; v < vectors.Length; ++v) {
+					ct = vectorCentroid [v];
 
 					// and compute the mean
-					sums [c].Item1.R += vectors [v].R;
-					sums [c].Item1.G += vectors [v].G;
-					sums [c].Item1.B += vectors [v].B;
-					sums [c].Item2++;
+					sums [ct].Item1.R += vectors [v].R;
+					sums [ct].Item1.G += vectors [v].G;
+					sums [ct].Item1.B += vectors [v].B;
+					sums [ct].Item2++;
 				}
 
 				// compute new centroids
@@ -199,7 +201,7 @@ namespace cg_proj_1.Filters.ColorSpace {
 			List<ColorVector> palette;
 			int [] outPixels;
 
-			(palette, outPixels) = kmeans (ref pixels, 30);
+			(palette, outPixels) = kmeans (pixels, 30);
 
 			// output the pixels to the image
 			for (int i = 0; i < width * height; ++i) {
