@@ -62,6 +62,7 @@ namespace cg_proj_1 {
 
 			// TASK 2
 			filterFactories.Add (new FilterFactory<Filters.CustomMatrixFilter> ("Custom (Convolutional)"));
+			filterFactories.Add (new FilterFactory<Filters.ColorSpace.CBCRAvgDitheringFilter> ("Y'CbCr Avg. Dithering"));
 			filterFactories.Add (new FilterFactory<Filters.ColorSpace.IsolateChannelFilter> ("Isolate RGB Channel"));
 			filterFactories.Add (new FilterFactory<Filters.GrayscaleFilter> ("Grayscale"));
 			filterFactories.Add (new FilterFactory<Filters.ColorSpace.AvergaeDitheringFilter> ("Average Dithering"));
