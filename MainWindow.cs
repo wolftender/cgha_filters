@@ -60,9 +60,13 @@ namespace cg_proj_1 {
 			// register types of filters (hardcoded)
 			// this may be done using metaprogramming later (maybe)
 
+			// TASK 2
 			filterFactories.Add (new FilterFactory<Filters.CustomMatrixFilter> ("Custom (Convolutional)"));
 			filterFactories.Add (new FilterFactory<Filters.ColorSpace.IsolateChannelFilter> ("Isolate RGB Channel"));
 			filterFactories.Add (new FilterFactory<Filters.GrayscaleFilter> ("Grayscale"));
+			filterFactories.Add (new FilterFactory<Filters.ColorSpace.AvergaeDitheringFilter> ("Average Dithering"));
+
+			// TASK 1
 			filterFactories.Add (new FilterFactory<Filters.ColorSpace.KMeansQuantization> ("K-Means Quantization"));
 			filterFactories.Add (new FilterFactory<Filters.GaussianSmoothing> ("Gaussian Smoothing"));
 			filterFactories.Add (new FilterFactory<Filters.SharpenFilter> ("Sharpen"));
